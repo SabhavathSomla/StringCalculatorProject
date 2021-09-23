@@ -5,6 +5,11 @@ public class StringCalculator {
     if(numbers==""){
       return 0;
     }
+    if(numbers.charAt(0)=='/' && numbers.charAt(1)=='/' && numbers.charAt(3)== '\n'){
+    	char newDelimiter = numbers.charAt(2);
+    	numbers = numbers.substring(4);
+      numbers = numbers.replace(newDelimiter, ',');
+    }
     numbers = numbers.replace('\n', ',');
     String[] arr =numbers.split(",");
     int sum = 0;
@@ -15,7 +20,9 @@ public class StringCalculator {
     return sum;
   }
   
-  public static void main(String[] args) { 
+  public static void main(String[] args) {
     System.out.println(add(""));
+    System.out.println(add("2\n3,4,5,6"));
+    System.out.println(add("//;\n1;2"));
   }
 }
